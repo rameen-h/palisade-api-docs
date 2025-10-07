@@ -17,8 +17,28 @@ import HomelightApiDocs from "./components/HomelightApiDocs";
 import ErrorApiDocs from "./components/ErrorApiDocs";
 import BlacklistAllianceApiDocs from "./components/BlacklistAllianceApiDocs";
 import AgentApiDocs from "./components/AgentApiDocs";
-
+import AdminApiDocs from "./components/AdminApiDocs";
+import AlysonSessionDocs from "./components/AlysonSessionApiDocs";
+import CampaignDocs from "./components/CampaignApiDocs";
+import ConnectorDocs from "./components/ConnectorApiDocs";
+import DataAxleApiDocs from "./components/DataAxleApiDocs";
+import DatasetApiDocs from "./components/DatasetApiDocs";
+import EventApiDocs from "./components/EventApiDocs";
+import FileOnboardingApiDocs from "./components/FileOnboardingDocs";
+import FiltersApiDocs from "./components/FiltersApiDocs";
+import FormBuilderApiDocs from "./components/FormBuilderApiDocs";
+import JsonApiDocs from "./components/JsonApiDocs";
+import PlaybookProposalManagementDocs from "./components/PlaybookProposalManagementDocs";
 import LoginComponent from "./components/Login";
+import PublicApiDocs from "./components/PublicDocs";
+import SearchApiDocs from "./components/SearchApiDocs";
+import SessionShortApiDocs from "./components/SessionShortDocs";
+import SmartRouterApiDocs from "./components/SmartRouterDocs";
+import TwilioApiDocs from "./components/TwilioApiDocs";
+import UserIdentificationApiDocs from "./components/UserIdentificationDocs";
+import UserManagementApiDocs from "./components/UserManagementDocs";
+import WorkerApiDocs from "./components/WorkerApiDocs";
+import WorkspaceApiDocs from "./components/WorkspaceApiDocs";
 
 const AlysonLogo = () => (
   <img
@@ -124,6 +144,48 @@ const App: React.FC = () => {
         return <BlacklistAllianceApiDocs />;
       case "agent":
         return <AgentApiDocs />;
+      case "admin":
+        return <AdminApiDocs />;
+      case "alyson session":
+        return <AlysonSessionDocs />;
+      case "campaign":
+        return <CampaignDocs />;
+      case "connector":
+        return <ConnectorDocs />;
+      case "data axle":
+        return <DataAxleApiDocs />;
+      case "dataset":
+        return <DatasetApiDocs />;
+      case "event":
+        return <EventApiDocs />;
+      case "file onboarding":
+        return <FileOnboardingApiDocs />;
+      case "filters":
+        return <FiltersApiDocs />;
+      case "form builder":
+        return <FormBuilderApiDocs />;
+      case "json":
+        return <JsonApiDocs />;
+      case "playbook proposal management":
+        return <PlaybookProposalManagementDocs />;
+      case "public":
+        return <PublicApiDocs />;
+      case "search":
+        return <SearchApiDocs />;
+      case "session shortcode":
+        return <SessionShortApiDocs />;
+      case "smart router":
+        return <SmartRouterApiDocs />;
+      case "twilio":
+        return <TwilioApiDocs />;
+      case "user identification":
+        return <UserIdentificationApiDocs />;
+      case "user management":
+        return <UserManagementApiDocs />;
+      case "worker":
+        return <WorkerApiDocs />;
+      case "workspace":
+        return <WorkspaceApiDocs />;
       default:
         return null;
     }
@@ -342,6 +404,199 @@ const App: React.FC = () => {
             onClick={() => setSelectedTab("agent")}
           >
             Agent
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "admin" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("admin")}
+          >
+            Admin
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "alyson session" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("alyson session")}
+          >
+            Alyson Session
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "campaign" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("campaign")}
+          >
+            Campaign
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "connector" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("connector")}
+          >
+            Connector
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "data axle" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("data axle")}
+          >
+            Data Axle
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "dataset" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("dataset")}
+          >
+            Dataset
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "event" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("event")}
+          >
+            Event
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "file onboarding" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("file onboarding")}
+          >
+            File Onboarding
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "filters" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("filters")}
+          >
+            Filters
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "form builder" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("form builder")}
+          >
+            Form Builder
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "json" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("json")}
+          >
+            Json
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "playbook proposal management"
+                ? activeButtonStyle
+                : {}),
+            }}
+            onClick={() => setSelectedTab("playbook proposal management")}
+          >
+            Playbook Proposal
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "public" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("public")}
+          >
+            Public
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "search" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("search")}
+          >
+            Search
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "session shortcode" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("session shortcode")}
+          >
+            Session Shortcode
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "smart router" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("smart router")}
+          >
+            Smart Router
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "twilio" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("twilio")}
+          >
+            Twilio
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "user identification"
+                ? activeButtonStyle
+                : {}),
+            }}
+            onClick={() => setSelectedTab("user identification")}
+          >
+            User Identification
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "user management" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("user management")}
+          >
+            User Management
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "worker" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("worker")}
+          >
+            Worker
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "workspace" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("workspace")}
+          >
+            Workspace
           </button>
         </div>
 
