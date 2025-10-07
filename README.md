@@ -1,0 +1,19 @@
+The Palisade Api Docs comprise of the following controllers:
+- Facebook Ads
+- Google Ads
+- Checkout
+- Message Media
+- Acquire
+- Tune
+- Zero Bounce Activity
+- Zero Bounce
+- Thoughtly Suppression
+- Thoughtly
+- SMS Campaign
+- SFMC Suppression
+- Reactivate
+- MM Suppression
+- Homelight
+- Error
+- Blacklist Alliance
+- Agent
