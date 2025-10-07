@@ -13,6 +13,8 @@
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.64.0",
+    "react-login": "^0.1.0",
     "swagger-ui": "^5.29.3",
     "swagger-ui-react": "^5.29.3"
   },

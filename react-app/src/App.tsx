@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FacebookApiDocs from "./components/FacebookApiDocs";
 import GoogleApiDocs from "./components/GoogleApiDocs";
 import CheckoutApiDocs from "./components/CheckoutApiDocs";
@@ -18,8 +18,73 @@ import ErrorApiDocs from "./components/ErrorApiDocs";
 import BlacklistAllianceApiDocs from "./components/BlacklistAllianceApiDocs";
 import AgentApiDocs from "./components/AgentApiDocs";
 
+import LoginComponent from "./components/Login";
+
+const AlysonLogo = () => (
+  <img
+    src="https://www.alyson.ai/media/images/alysonlogo.svg"
+    alt="Alyson Logo"
+    style={{ height: 40 }}
+  />
+);
+
+const Header: React.FC = () => (
+  <header
+    style={{
+      display: "flex",
+      alignItems: "center",
+      padding: "5px 0px",
+      backgroundColor: "#f6de95ff",
+      color: "#07074b",
+    }}
+  >
+    <AlysonLogo />
+    <h1
+      style={{
+        marginLeft: 10,
+        fontFamily: "sans-serif",
+        fontSize: 20,
+        paddingTop: "5px",
+        paddingRight: "200px",
+        fontWeight: "bold",
+      }}
+    >
+      Palisade API Docs
+    </h1>
+  </header>
+);
+
+const Footer: React.FC = () => (
+  <footer
+    style={{
+      textAlign: "center",
+      padding: "20px 10px",
+      backgroundColor: "#f6de95ff",
+      color: "#fff",
+      position: "fixed",
+      bottom: 0,
+      width: "100%",
+    }}
+  ></footer>
+);
+
 const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("facebook");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const auth = localStorage.getItem("isAuthenticated");
+    if (auth === "true") setIsAuthenticated(true);
+  }, []);
+
+  // useEffect(() => {
+  //   localStorage.removeItem("isAuthenticated");
+  //   setIsAuthenticated(false);
+  // }, []);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
 
   const renderContent = () => {
     switch (selectedTab) {
@@ -66,7 +131,7 @@ const App: React.FC = () => {
 
   const containerStyle: React.CSSProperties = {
     display: "flex",
-    height: "200vh",
+    height: "calc(100vh - 100px)", // accounting for header + footer
     fontFamily: "Arial, sans-serif",
   };
 
@@ -74,9 +139,10 @@ const App: React.FC = () => {
     width: 180,
     backgroundColor: "#f5f5f5",
     borderRight: "1px solid #ccc",
-    display: "flex", //div is now a flexbox container
-    flexDirection: "column", //tells Flexbox to stack children vertically (from top to bottom).
-    padding: 10, //Adds space inside the tab panel.
+    display: "flex",
+    flexDirection: "column",
+    padding: 10,
+    overflowY: "auto",
   };
 
   const buttonBaseStyle: React.CSSProperties = {
@@ -100,180 +166,189 @@ const App: React.FC = () => {
     overflowY: "auto",
   };
 
-  return (
-    // Container: This style object is applied to the outermost <div> that wraps both your tabs panel (left side) and your content panel (right side).
-    <div style={containerStyle}>
-      <div style={tabsStyle}>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "facebook" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("facebook")}
-        >
-          Facebook Ads
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "google" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("google")}
-        >
-          Google Ads
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "checkout" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("checkout")}
-        >
-          Checkout
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "messageMedia" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("messageMedia")}
-        >
-          Message Media
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "acquire" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("acquire")}
-        >
-          Acquire
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "tune" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("tune")}
-        >
-          Tune
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "zero bounce activity"
-              ? activeButtonStyle
-              : {}),
-          }}
-          onClick={() => setSelectedTab("zero bounce activity")}
-        >
-          Zero Bounce Activity
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "zero bounce" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("zero bounce")}
-        >
-          Zero Bounce
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "thoughtly suppression"
-              ? activeButtonStyle
-              : {}),
-          }}
-          onClick={() => setSelectedTab("thoughtly suppression")}
-        >
-          Thoughtly Suppression
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "thoughtly" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("thoughtly")}
-        >
-          Thoughtly
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "sms campaign" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("sms campaign")}
-        >
-          Sms Campaign
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "sfmc suppression" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("sfmc suppression")}
-        >
-          Sfmc Suppression
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "reactivate" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("reactivate")}
-        >
-          Reactivate
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "mm suppression" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("mm suppression")}
-        >
-          MM Suppression
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "homelight" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("homelight")}
-        >
-          Homelight
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "error" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("error")}
-        >
-          Error
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "blacklist alliance" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("blacklist alliance")}
-        >
-          Blacklist Alliance
-        </button>
-        <button
-          style={{
-            ...buttonBaseStyle,
-            ...(selectedTab === "agent" ? activeButtonStyle : {}),
-          }}
-          onClick={() => setSelectedTab("agent")}
-        >
-          Agent
-        </button>
-      </div>
+  if (!isAuthenticated) {
+    return <LoginComponent onLogin={handleLogin} />;
+  }
 
-      <div style={contentStyle}>{renderContent()}</div>
-    </div>
+  return (
+    <>
+      <Header />
+      <div style={containerStyle}>
+        <div style={tabsStyle}>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "facebook" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("facebook")}
+          >
+            Facebook Ads
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "google" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("google")}
+          >
+            Google Ads
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "checkout" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("checkout")}
+          >
+            Checkout
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "messageMedia" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("messageMedia")}
+          >
+            Message Media
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "acquire" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("acquire")}
+          >
+            Acquire
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "tune" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("tune")}
+          >
+            Tune
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "zero bounce activity"
+                ? activeButtonStyle
+                : {}),
+            }}
+            onClick={() => setSelectedTab("zero bounce activity")}
+          >
+            Zero Bounce Activity
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "zero bounce" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("zero bounce")}
+          >
+            Zero Bounce
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "thoughtly suppression"
+                ? activeButtonStyle
+                : {}),
+            }}
+            onClick={() => setSelectedTab("thoughtly suppression")}
+          >
+            Thoughtly Suppression
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "thoughtly" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("thoughtly")}
+          >
+            Thoughtly
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "sms campaign" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("sms campaign")}
+          >
+            Sms Campaign
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "sfmc suppression" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("sfmc suppression")}
+          >
+            Sfmc Suppression
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "reactivate" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("reactivate")}
+          >
+            Reactivate
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "mm suppression" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("mm suppression")}
+          >
+            MM Suppression
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "homelight" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("homelight")}
+          >
+            Homelight
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "error" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("error")}
+          >
+            Error
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "blacklist alliance"
+                ? activeButtonStyle
+                : {}),
+            }}
+            onClick={() => setSelectedTab("blacklist alliance")}
+          >
+            Blacklist Alliance
+          </button>
+          <button
+            style={{
+              ...buttonBaseStyle,
+              ...(selectedTab === "agent" ? activeButtonStyle : {}),
+            }}
+            onClick={() => setSelectedTab("agent")}
+          >
+            Agent
+          </button>
+        </div>
+
+        <div style={contentStyle}>{renderContent()}</div>
+      </div>
+      <Footer />
+    </>
   );
 };
 
