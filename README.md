@@ -17,3 +17,23 @@ The Palisade Api Docs comprise of the following controllers:
 - Error
 - Blacklist Alliance
 - Agent
+- Admin
+- Alyson Session
+- Campaign
+- Connector
+- Data Axle
+- Event
+- File Onboarding
+- Filters
+- Form Builder
+- Json Data
+- Playbook Proposal Management
+- Public
+- Search
+- Session Short Code
+- Smart Router
+- Twilio
+- User Identification
+- User Management
+- Worker
+- Workspace 
