@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SidebarTabs from "./components/SidebarTabs";
-
-// Component imports
 import FacebookApiDocs from "./components/FacebookApiDocs";
 import GoogleApiDocs from "./components/GoogleApiDocs";
 import CheckoutApiDocs from "./components/CheckoutApiDocs";
@@ -123,9 +121,9 @@ const Footer: React.FC = () => (
 const App: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("home");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(() => {
     const auth = localStorage.getItem("isAuthenticated");
-
     if (auth === "true") {
       setIsAuthenticated(true);
     } else {
@@ -235,18 +233,6 @@ const App: React.FC = () => {
     }
   };
 
-  const containerStyle: React.CSSProperties = {
-    display: "flex",
-    height: "calc(100vh - 100px)",
-    fontFamily: "Arial, sans-serif",
-  };
-
-  const contentStyle: React.CSSProperties = {
-    flex: 1,
-    padding: 20,
-    overflowY: "auto",
-  };
-
   if (!isAuthenticated) {
     return null;
   }
@@ -254,9 +240,21 @@ const App: React.FC = () => {
   return (
     <>
       <Header onLogout={handleLogout} />
-      <div style={containerStyle}>
-        <SidebarTabs selectedTab={selectedTab} onTabSelect={setSelectedTab} />
-        <div style={contentStyle}>{renderContent()}</div>
+      <div
+        style={{
+          display: "flex",
+          height: "calc(100vh - 100px)",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
+        {/* Hide Sidebar on Homepage */}
+        {selectedTab !== "home" && (
+          <SidebarTabs selectedTab={selectedTab} onTabSelect={setSelectedTab} />
+        )}
+
+        <div style={{ flex: 1, padding: 20, overflowY: "auto" }}>
+          {renderContent()}
+        </div>
       </div>
       <Footer />
     </>
