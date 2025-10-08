@@ -54,7 +54,7 @@ const Header: React.FC = () => (
       display: "flex",
       alignItems: "center",
       padding: "5px 0px",
-      backgroundColor: "#f6de95ff",
+      backgroundColor: "#FFFFFF",
       color: "#07074b",
     }}
   >
@@ -78,14 +78,26 @@ const Footer: React.FC = () => (
   <footer
     style={{
       textAlign: "center",
-      padding: "20px 10px",
-      backgroundColor: "#f6de95ff",
-      color: "#fff",
+      padding: "2px 0px",
+      backgroundColor: "#FFFFFF",
+      color: "#07074b",
       position: "fixed",
       bottom: 0,
       width: "100%",
     }}
-  ></footer>
+  >
+    <span style={{ fontSize: 14 }}>
+      © {new Date().getFullYear()} All rights reserved{" "}
+      <a
+        href="https://www.alyson.ai/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "#007bff", textDecoration: "none" }}
+      >
+        Alyson
+      </a>
+    </span>
+  </footer>
 );
 
 const App: React.FC = () => {
